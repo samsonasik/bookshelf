@@ -1,7 +1,7 @@
 <?php
 return [
     'event_manager' => \DI\decorate(function ($eventManager, $container) {
-        $eventManager->attach('ERROR_DISPATCH', [$container->get(\ClassicApp\EventListener\DispatcherExceptionListener::class), 'onError']);
+        $eventManager->attach('dispatch_error', [$container->get(\ClassicApp\EventListener\DispatcherExceptionListener::class), 'onError']);
         $eventManager->attach('*', [$container->get(\ClassicApp\EventListener\ExceptionListener::class), 'onError']);
         return $eventManager;
     }),
